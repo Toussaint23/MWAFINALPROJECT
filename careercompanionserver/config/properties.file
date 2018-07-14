@@ -1,6 +1,6 @@
 # contents of properties file
 [db]
-connection = 'mongodb://<mongodb>:<careercompanion>@ds137651.mlab.com:37651/jbmfinalproject'
+connection = mongodb://careercompanion:careercompanion4@ds137651.mlab.com:37651/jbmfinalproject
 
 [server]
 port = 3000
