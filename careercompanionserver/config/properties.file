@@ -5,4 +5,7 @@ connection = mongodb://careercompanion:careercompanion4@ds137651.mlab.com:37651/
 [server]
 port = 3000
 
+[server]
+path = /careercompanion/1.0.0
+
 

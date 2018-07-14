@@ -9,8 +9,9 @@ var properties = PropertiesReader('./config/properties.file');
 var mongoose = require('./db_connection/database_connection')
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var iquestionRouter = require('./routes/iquestion');
 var port=properties.get('server.port');
+var prefix = properties.get('server.path');
 
 var app = express();
 
@@ -25,8 +26,11 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+ app.use('/', indexRouter);
+// app.use('/users', usersRouter);
+console.log(prefix);
+app.use(prefix, iquestionRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
