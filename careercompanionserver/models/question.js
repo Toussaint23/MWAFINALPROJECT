@@ -12,5 +12,7 @@ let QuestionSchema = new mongoose.Schema ({
     }],
  tags:[]
  });
+
+ module.exports=mongoose.model('question', QuestionSchema);
  
  
