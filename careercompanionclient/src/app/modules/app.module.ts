@@ -19,9 +19,9 @@ import {
   MatOptionModule,
   MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher
 } from '@angular/material';
-import { AppComponent } from './app.component';
-import {RegisterComponent} from './components/register.component';
-import {SigninComponent} from './components/login.component';
+import { AppComponent } from '../app.component';
+import {RegisterComponent} from '../components/register.component';
+import {SigninComponent} from '../components/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
