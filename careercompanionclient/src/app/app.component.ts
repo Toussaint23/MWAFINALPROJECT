@@ -2,7 +2,18 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template:
+  `
+  <mat-toolbar>MUM Career Companion
+  <span style="flex: 1 1 auto"></span>
+  <button mat-button routerLink = '/register'>SignUp</button>
+  <button mat-button routerLink = '/login'>SignIn</button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+
+
+  `
+  ,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
