@@ -12,20 +12,41 @@ routes.get('/questions',(req,res,next)=>{
 });
 routes.get('/questions/:id',(req,res,next)=>{
    // let ida = {"$oid": req.params.id}
-    //question.findById(req.params._id,(err,result)=>
-    question.find({"_id":ObjectId(req.params.id)},(err,result)=>
-{
-    if(err) return next(err);
-    res.send(JSON.stringify({result}))
+ //   question.findById({"_id":req.params.id},(err,result)=>
+  //  const uid=ObjectId(req.params.id)
+ //   question.findById({ "": { "$oid":req.params.id}},(err,result)=>
+ question.findOne({ "email":req.params.email},(err,result)=>
+        {
+            if(err) return next(err);
+            res.send(JSON.stringify({result}))
+        });
 });
+routes.post('/questions',(req,res,next)=> {
+        question.create(req.body,(err,result)=> {
+           if(err) return next(err);
+        res.status(200).send(JSON.stringify({message: "OK"}))
+        });    
 });
-routes.post('/questions',(req,res,next)=>{
-    question.create(req.body,(err,result)=>
-{
-    if(err) return next(err);
+
+routes.delete('/questions/:id',(req,res,next)=> {
+    question.findByIdAndRemove(req.params.id,req.body,(err,result)=> {
+       if(err) return next(err);
+   // res.status(200).send(JSON.stringify({message: "OK"}))
+   res.json(result)
+    });    
+});
+
+routes.put('/questions/:id',(req,res,next)=> {
+    question.findByIdAndUpdate(req.params.id.req.body,(err,result)=> {
+       if(err) return next(err);
     res.status(200).send(JSON.stringify({message: "OK"}))
+    });    
 });
-    
-});
+// routes.put('/questions/:id/',(req,res,next)=> {
+//     question.findByIdAndUpdate(req.params.id.req.body,(err,result)=> {
+//        if(err) return next(err);
+//     res.status(200).send(JSON.stringify({message: "OK"}))
+//     });    
+// });
 
 module.exports=routes;
