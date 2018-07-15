@@ -6,10 +6,11 @@ var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./config/properties.file');
-var mongoose = require('./db_connection/database_connection')
+require('./db_connection/database_connection')
 
-var indexRouter = require('./routes/index');
+var studentRouter = require('./routes/student');
 var iquestionRouter = require('./routes/iquestion');
+
 var port=properties.get('server.port');
 var prefix = properties.get('server.path');
 
@@ -18,6 +19,9 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+app.enable('strict routing');
+app.enable('case sensitive routing');
+app.disable('x-powered-by');
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -26,10 +30,8 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
- app.use('/', indexRouter);
-// app.use('/users', usersRouter);
-console.log(prefix);
 app.use(prefix, iquestionRouter);
+app.use(prefix, studentRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
