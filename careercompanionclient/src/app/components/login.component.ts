@@ -1,13 +1,13 @@
 import {Component} from '@angular/core';
 
 @Component({
-selector:'login',
+selector: 'app-login',
 template:
 `
 Signin
 `
 
 })
-export class SigninComponent{
+export class SigninComponent {
 
 }
