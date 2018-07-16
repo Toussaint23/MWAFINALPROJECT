@@ -1,5 +1,6 @@
 var createError = require('http-errors');
 var express = require('express');
+//Added cors
 var cors = require('cors');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -24,6 +25,7 @@ app.enable('strict routing');
 app.enable('case sensitive routing');
 app.disable('x-powered-by');
 
+//userCors
 app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());

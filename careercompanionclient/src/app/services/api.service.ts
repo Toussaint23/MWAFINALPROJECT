@@ -13,7 +13,7 @@ export class ApiService {
     getStudents(){
         this.http.get('http://localhost:3000/careercompanion/1.0.0/students/').subscribe(res =>{
           this.students = res.json();
-          console.log(this.students[0].status);
+          console.log(this.students[0].mail);
         });
     }
 }
