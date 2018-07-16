@@ -1,0 +1,65 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <!--'_id', 'lastName', 'firstName', 'mail', 'country'-->
+  <mat-table #table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="category">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Category </mat-header-cell>
+      <mat-cell *matCellDef="let iquestion"> {{iquestion.category}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="comapanyname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> comapanyname </mat-header-cell>
+      <mat-cell *matCellDef="let iquestion"> {{iquestion.comapanyname}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="questiontext">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> questiontext </mat-header-cell>
+      <mat-cell *matCellDef="let iquestion"> {{iquestion.questiontext}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> email </mat-header-cell>
+      <mat-cell *matCellDef="let iquestion"> {{iquestion.email}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>
+
+
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let question of questions">{{ question.category }}</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let question of questions">
+             {{question.category}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div>
+    <table  style="width:100%">
+    <tr>
+        <th>category Name</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+        <td> "{{ question.category }}"</td>
+    </tr>
+    </table>
+    
+    </div> -->

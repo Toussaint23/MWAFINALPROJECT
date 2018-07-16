@@ -1,7 +1,5 @@
 import { Component, OnChanges, Input } from '@angular/core';
-
 // import {FormArray, FormBuilder, FormGroup, FormsModule} from '@angular/forms';
-
 import {InterviewQ, Comment} from '../models/interview-q';
 // import {IqserviceService} from '../iqservice.service';
 import {QstService} from '../services/qst.service';
@@ -51,7 +49,7 @@ export class QuestionDetailComponent  {
     //   console.log('interviewData ' , interviewData);
     //  // this._interviewQ.category = interviewData.
     // });
-    this._qstService.addQuestion(this.question);
+    this._qstService.addQuestion(form);
   }
 
 
