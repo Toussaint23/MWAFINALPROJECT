@@ -6,7 +6,7 @@ require ('mongoose');
 routes.get('/questions',(req,res,next)=>{
     question.find({},(err,result)=>{
         if(err) return next(err);
-        res.send(JSON.stringify({result}))
+        res.send(JSON.stringify(result))
     });
 });
 routes.post('/questions',(req,res,next)=>{
@@ -18,7 +18,7 @@ routes.post('/questions',(req,res,next)=>{
 routes.get('/questions/:id',(req,res,next)=>{
      question.find({"_id":ObjectId(req.params.id)},(err,result)=>{
         if(err) return next(err);
-        res.send(JSON.stringify({result}))
+        res.send(JSON.stringify(result))
     });
 });
 routes.put('/questions/:id',(req,res,next)=>{

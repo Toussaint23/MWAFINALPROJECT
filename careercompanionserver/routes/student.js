@@ -11,20 +11,20 @@ routes.post('/student/saving',(req,res,next)=>{
 routes.get('/students',(req,res,next)=>{
     student.find({},(err,result)=>{
         if(err) return next(err);
-        res.send(JSON.stringify({result}));
+        res.send(JSON.stringify(result));
     });
 });
 routes.get('/student/:id',(req,res,next)=>{
      student.find({"_id":req.params.id},(err,result)=>{
         if(err) return next(err);
-        res.send(JSON.stringify({result}));
+        res.send(JSON.stringify(result));
         next();
     });
 });
 routes.get('/students/:status',(req,res,next)=>{
     student.find({"status":req.params.status},(err,result)=>{
        if(err) return next(err);
-       res.send(JSON.stringify({result}))
+       res.send(JSON.stringify(result))
    });
 });
 routes.put('/student/:id',(req,res,next)=>{
