@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
-import { HttpClientModule } from '@angular/common/http'; 
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule} from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -12,7 +12,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 
 import {
@@ -30,10 +31,17 @@ import {RegisterComponent} from './components/register.component';
 import {SigninComponent} from './components/login.component';
 import { ApiService } from './services/api.service';
 import { StudentsComponent } from './components/students.component';
+import { QstService } from './services/qst.service';
+import {QuestionDetailComponent} from './components/question-detail.component';
+import {InterviewQ, Comment} from './models/interview-q';
+import { IquestionlistComponent } from './components/iquestionlist.component';
 
 const routes = [
   {path: 'register', component: RegisterComponent},
-  {path: 'welcome', component: StudentsComponent}
+  {path: 'welcome', component: StudentsComponent},
+  {path: 'addquestion', component: QuestionDetailComponent},
+  {path: 'listquestion', component: IquestionlistComponent}
+
 ];
 
 @NgModule({
@@ -42,6 +50,8 @@ const routes = [
     RegisterComponent,
     SigninComponent,
     StudentsComponent,
+    IquestionlistComponent,
+    QuestionDetailComponent
 
   ],
   imports: [
@@ -76,7 +86,7 @@ const routes = [
    HttpClientModule,
    HttpModule
   ],
-  providers: [ApiService],
+  providers: [ApiService, InterviewQ, QstService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

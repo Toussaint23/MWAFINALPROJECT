@@ -1,0 +1,62 @@
+<mat-card>  
+  <mat-card-content>  
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">  
+        <table>  
+            <tr> 
+                 <td>  
+                    <mat-form-field class="qest-full-width">  
+                        <input formControlName="category" matInput placeholder="Category">  
+                    </mat-form-field>  
+                    <mat-error>  
+                        <span *ngIf="!myForm.get('category').valid && myForm.get('category').touched">Please enter the Category !!!</span>  
+                    </mat-error>  
+                  </td>
+              </tr> 
+                <tr> 				
+                <td>  
+                    <mat-form-field class="qest-full-width">  
+                        <input formControlName="companyname" matInput placeholder="Company Name">  
+                    </mat-form-field>  
+                    <mat-error>  
+                        <span *ngIf="!myForm.get('companyname').valid && myForm.get('companyname').touched">Please enter Company Name !!!</span>  
+                    </mat-error>  
+                </td>
+                </tr>
+                <tr>  
+                <td>  
+                    <mat-form-field class="qest-full-width">  
+                        <input formControlName="questiontext" matInput placeholder="Question">  
+                    </mat-form-field>  
+                    <mat-error>  
+                        <span *ngIf="!myForm.get('questiontext').valid && myForm.get('questiontext').touched">Please enter Last Name !!!</span>  
+                    </mat-error>  
+                </td>  
+            </tr>  
+            <tr>  
+              <td colspan="2" class="content-center">  
+                  <button mat-raised-button color="accent" [disabled]="!myForm.valid">Submit</button>  
+              </td>  
+          </tr>  
+          </table>  
+        </form>  
+    </mat-card-content>  
+  </mat-card>  
+
+
+<!-- <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div formGroupName="questionData">
+    <div class="form-group">
+      <label for="category">category</label>
+      <input type="text" class="form-control" id="category" formControlName="category">
+    </div>
+	  <div class="form-group">
+      <label for="companyname">Company Name</label>
+      <input type="text" class="form-control" id="companyname" formControlName="companyname">
+    </div> 
+	    <div class="form-group">
+        <label for="questiontext">Question</label>
+        <input type="text" class="form-control" id="questiontext" formControlName="questiontext">
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary" [disabled]="!myForm.valid">Submit</button>
+</form> -->

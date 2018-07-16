@@ -28,14 +28,18 @@ import {MatPaginatorModule} from '@angular/material/paginator';
 import { AppComponent } from '../app.component';
 import {RegisterComponent} from '../components/register.component';
 import {SigninComponent} from '../components/login.component';
-import {StudentsComponent} from '../components/students.component'
+import {StudentsComponent} from '../components/students.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
-//import { ApiService } from '../services/api.service';
+import {QuestionDetailComponent} from '../components/question-detail.component';
+import {InterviewQ, Comment} from '../models/interview-q';
+import {QstService} from '../services/qst.service';
+import { IquestionlistComponent } from '../components/iquestionlist.component';
 
 const routes = [
   {path: 'register', component: RegisterComponent},
-  {path: 'login', component: StudentsComponent}
+  {path: 'login', component: StudentsComponent},
+  {path: 'addquestion', component: QuestionDetailComponent},
+  {path: 'listquestion', component: IquestionlistComponent}
 ];
 
 @NgModule({
@@ -44,6 +48,8 @@ const routes = [
     RegisterComponent,
     SigninComponent,
     StudentsComponent,
+    QuestionDetailComponent,
+    IquestionlistComponent
   ],
   imports: [
     BrowserModule,
@@ -77,7 +83,7 @@ const routes = [
     MatPaginatorModule,
     BrowserAnimationsModule
   ],
-  providers: [ ],
+  providers: [InterviewQ, QstService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
