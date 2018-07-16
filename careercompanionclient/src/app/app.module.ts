@@ -12,6 +12,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -84,7 +85,8 @@ const routes = [
     MatSlideToggleModule,
     BrowserAnimationsModule,
    HttpClientModule,
-   HttpModule
+   HttpModule,
+   MatGridListModule
   ],
   providers: [ApiService, InterviewQ, QstService],
   bootstrap: [AppComponent]

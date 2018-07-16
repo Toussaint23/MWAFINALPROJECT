@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -12,6 +13,7 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatMenuModule,
@@ -54,6 +56,7 @@ const routes = [
   imports: [
     BrowserModule,
     HttpModule,
+    HttpClientModule,
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
@@ -81,7 +84,8 @@ const routes = [
     MatSlideToggleModule,
     MatTableModule,
     MatPaginatorModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatGridListModule
   ],
   providers: [InterviewQ, QstService ],
   bootstrap: [AppComponent]

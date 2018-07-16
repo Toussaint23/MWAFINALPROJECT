@@ -1,0 +1,25 @@
+<mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let question of questions">{{ question.category }}</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let question of questions">
+      {{question.category}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div>
+    <table  style="width:100%">
+    <tr>
+        <th>category Name</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+        <td> "{{ question.category }}"</td>
+    </tr>
+    </table>
+    
+    </div>
