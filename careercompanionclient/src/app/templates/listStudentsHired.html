@@ -1,0 +1,47 @@
+<!--<mat-nav-list>
+    <mat-list-item *ngFor="let student of students | async">
+       <a matLine href="#">{{student.lastName}}</a>
+    </mat-list-item>-->
+
+    <div class="example-container mat-elevation-z8">
+        <div class="example-header">
+          <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+          </mat-form-field>
+        </div>
+      
+        <!--'_id', 'lastName', 'firstName', 'mail', 'country'-->
+        <mat-table #table [dataSource]="dataSource" matSort>
+      
+          <ng-container matColumnDef="_id">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student._id}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="lastName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> LastName </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.lastName}} </mat-cell>
+          </ng-container>
+      
+          <ng-container matColumnDef="firstName">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> FirstName </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.firstName}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="mail">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.mail}} </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="country">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
+            <mat-cell *matCellDef="let student"> {{student.country}} </mat-cell>
+          </ng-container>
+      
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      
+        <mat-paginator #paginator [pageSize]="2" [pageSizeOptions]="[5, 10, 20]">
+        </mat-paginator>
+      </div>
