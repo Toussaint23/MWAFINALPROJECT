@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {RouterModule} from '@angular/router';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http'; 
 
 
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -12,13 +13,13 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
   MatMenuModule,
   MatIconModule,
   MatInputModule,
   MatDatepicker,
-
   MatNativeDateModule,
   MatOptionModule,
   MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher
@@ -47,6 +48,7 @@ const routes = [
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     HttpModule,
     MatToolbarModule,
     MatButtonModule,
@@ -54,6 +56,7 @@ const routes = [
     MatFormFieldModule,
     MatDatepickerModule,
     MatRadioModule,
+    MatListModule,
     MatSelectModule,
     MatDatepickerModule,
     RouterModule,

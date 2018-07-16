@@ -1,58 +1,67 @@
-import {Component} from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Student } from '../models/student';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { ApiService } from '../services/api.service';
-
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
 selector: 'StudentsList',
-template:
-`
-<mat-form-field>
-  <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-</mat-form-field>
-
-<div class="mat-elevation-z8">
-  <table mat-table [dataSource]="students" matSort>
-
-    <!-- ID Column -->
-    <ng-container matColumnDef="id">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-      <td mat-cell *matCellDef="let row"> {{apiService.students[0].id}} </td>
-    </ng-container>
-
-    <!-- Progress Column -->
-    <ng-container matColumnDef="progress">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Progress </th>
-      <td mat-cell *matCellDef="let row"> {{apiService.students[0].firstName}}% </td>
-    </ng-container>
-
-    <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-      <td mat-cell *matCellDef="let row"> {{apiService.students[0].email}} </td>
-    </ng-container>
-
-    <!-- Color Column -->
-    <ng-container matColumnDef="color">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Color </th>
-      <td mat-cell *matCellDef="let row" [style.color]="yellow"> {{apiService.students[0].status}} </td>
-    </ng-container>
-
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
-    </tr>
-  </table>
-
-  <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-</div>
-
-`
+templateUrl:'../templates/listStudentsHired.html',
+styleUrls: ['../templates/listStudentsHired.css']
 
 })
-export class StudentsComponent {
+export class StudentsComponent implements OnInit {
+    
+    @Input() students: Student[];
+    
 
-   constructor(private apiService: ApiService){}
-
-    ngOnInit(){
-        this.apiService.getStudents();
+    displayedColumns = ['_id', 'lastName', 'firstName', 'mail', 'country'];
+    dataSource: MatTableDataSource<Student>;
+  
+    constructor( private getStudentsSVC:ApiService) { 
+      this.getStudentsSVC.loadAll();
     }
+   
+    @ViewChild(MatPaginator) paginator: MatPaginator;
+    @ViewChild(MatSort) sort: MatSort;
+  
+    ngAfterViewInit() {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    }
+  
+    ngOnInit() {
+        console.log(this.students);
+      this.dataSource = new MatTableDataSource<Student>(this.getStudentsSVC.dataStore.students);
+    }
+  
+    applyFilter(filterValue: string) {
+      filterValue = filterValue.trim(); // Remove whitespace
+      filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+      this.dataSource.filter = filterValue;
+    }
+
+    
+  /* {
+    
+    students: Observable<Student[]>;
+
+  constructor(
+    zone: NgZone, 
+    private studentService: ApiService,
+    private router: Router) {
+
+  }
+
+  ngOnInit() {
+    this.students = this.studentService.students;
+    this.studentService.loadAll();
+    this.students.subscribe(
+        data => {
+          console.log(data);
+        });
+  }
+
+} */
 }
