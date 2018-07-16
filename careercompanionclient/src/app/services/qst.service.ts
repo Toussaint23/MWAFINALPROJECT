@@ -7,15 +7,20 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class QstService {
-  iquestions = [];
+  // iquestions = [];
    private _InterviewQ: BehaviorSubject<InterviewQ[]>;
-  constructor(private httpClient: HttpClient, private _interviewQ: InterviewQ) { }
+
+   dataStore: {
+    interviewqs: InterviewQ[]
+  };
+
+  constructor(private httpClient: HttpClient, private _interviewQ: InterviewQ) {
+    this.dataStore = { interviewqs: [] };
+    this._InterviewQ = new BehaviorSubject<InterviewQ[]>([]);
+  }
 
  getQuestions() {
- return this.httpClient.get('http://localhost:3000/careercompanion/1.0.0/questions'); // .subscribe(res => {
-    // this.iquestions = res.json();
-  //  console.log('this.iquestions', res.json());
- // });
+ return this.httpClient.get('http://localhost:3000/careercompanion/1.0.0/questions');
  }
 
  addQuestion(addInterviewQ) {
@@ -27,6 +32,17 @@ export class QstService {
   });
 }
 
+loadAll() {
+  const Url = 'http://localhost:3000/careercompanion/1.0.0/questions';
+
+  return this.httpClient.get<InterviewQ[]>(Url)
+    .subscribe(data => {
+      this.dataStore.interviewqs = data;
+      this._InterviewQ.next(Object.assign({}, this.dataStore).interviewqs);
+    }, error => {
+      console.log('Failed to fetch iquestion');
+    });
+}
 // addQuestion(addInterviewQ) {
 //   this._interviewQ.category = addInterviewQ.
 //   console.log('this._interviewQ.category: ', this._interviewQ.category);
