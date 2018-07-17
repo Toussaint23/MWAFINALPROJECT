@@ -4,5 +4,7 @@ export class Student{
     firstName:string
     mail:string
     country:string
-    details_employment:String[]
+    details_employment:[{}]
+    recruiter:{}
+
 }

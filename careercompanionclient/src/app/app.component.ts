@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   template:
   `
-  <mat-toolbar>MUM Career Companion
+  <mat-toolbar color='primary'>MUM Career Companion
   <span style="flex: 1 1 auto"></span>
   <button mat-button routerLink = '/register'>SignUp</button>
   <button mat-button routerLink = '/login'>SignIn</button>
