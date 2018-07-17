@@ -11,7 +11,7 @@ routes.get('/questions',(req,res,next)=>{
 });
 routes.get('/questions/bycategory',(req,res,next)=>{
     // question.aggregate(["$group : { category:'$category' }"],(err,result)=>{
-      question.aggregate([{"$group" : {"category":$category}}]),(err,result)=>{   
+      question.aggregate([{"$group" : {"category":req.query.category}}]),(err,result)=>{   
         if(err) return next(err);
         res.send(JSON.stringify(result))
     });
