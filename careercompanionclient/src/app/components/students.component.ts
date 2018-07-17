@@ -16,7 +16,7 @@ export class StudentsComponent implements OnInit {
     @Input() students: Student[];
     
 
-    displayedColumns = ['_id', 'lastName', 'firstName', 'mail', 'country'];
+    displayedColumns = ['lastName', 'firstName', 'mail', 'country', 'details_employment', 'position','recruiter'];
     dataSource: MatTableDataSource<Student>;
   
     constructor( private getStudentsSVC:ApiService) { 

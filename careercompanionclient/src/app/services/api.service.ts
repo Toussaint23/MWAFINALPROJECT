@@ -28,7 +28,7 @@ export class ApiService {
     }
   
     loadAll() {
-      const studentUrl = 'http://localhost:3000/careercompanion/1.0.0/students';
+      const studentUrl = 'http://localhost:3000/careercompanion/1.0.0/students/hired';
   
       return this.http.get<Student[]>(studentUrl)
         .subscribe(data => {
