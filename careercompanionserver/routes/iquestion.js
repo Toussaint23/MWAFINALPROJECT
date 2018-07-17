@@ -9,6 +9,13 @@ routes.get('/questions',(req,res,next)=>{
         res.send(JSON.stringify(result))
     });
 });
+routes.get('/questions/bycategory',(req,res,next)=>{
+    // question.aggregate(["$group : { category:'$category' }"],(err,result)=>{
+      question.aggregate([{"$group" : {"category":$category}}]),(err,result)=>{   
+        if(err) return next(err);
+        res.send(JSON.stringify(result))
+    });
+});
 routes.post('/questions',(req,res,next)=>{
     question.create(req.body,(err,result)=>{
         if(err) return next(err);

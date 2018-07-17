@@ -1,36 +1,40 @@
 <mat-card>  
-  <mat-card-content>  
+        <mat-card-header>
+                <mat-card-title class="cardtitle"><h1> Interview Question</h1></mat-card-title>
+        </mat-card-header>
+
+  <mat-card-content class="question-form">  
     <form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm.value)">  
-        <table>  
+        <table class="question-form">  
             <tr> 
                  <td>  
-                    <mat-form-field class="qest-full-width">  
+                    <mat-form-field class="question-form">  
                         <input formControlName="category" matInput placeholder="Category">  
                     </mat-form-field>  
                     <mat-error>  
                         <span *ngIf="!myForm.get('category').valid && myForm.get('category').touched">Please enter the Category !!!</span>  
                     </mat-error>  
                   </td>
-			
+            </tr>
+             <tr>
                 <td>  
-                    <mat-form-field class="qest-full-width">  
+                    <mat-form-field class="question-form">  
                         <input formControlName="companyname" matInput placeholder="Company Name">  
                     </mat-form-field>  
                     <mat-error>  
                         <span *ngIf="!myForm.get('companyname').valid && myForm.get('companyname').touched">Please enter Company Name !!!</span>  
                     </mat-error>  
                 </td>
-                </tr>
-                <tr>  
-                <td>  
+             </tr>
+            <tr>  
                     
-                    <mat-form-field class="qest-full-width">  
-                        <textarea rows="5" formControlName="questiontext" matInput placeholder="Question">  </textarea>
+                    <mat-form-field class="question-form">  
+                        <textarea rows="3" class="textarea-full-width" formControlName="questiontext" matInput placeholder="Question">  </textarea>
                     </mat-form-field>  
                     <mat-error>  
                         <span *ngIf="!myForm.get('questiontext').valid && myForm.get('questiontext').touched">Please Enter Interview Question !!!</span>  
                     </mat-error>  
-                </td>  
+
             </tr>  
             <tr>  
               <td colspan="2" class="content-center">  

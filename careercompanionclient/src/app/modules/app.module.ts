@@ -41,7 +41,7 @@ const routes = [
   {path: 'login', component: StudentsComponent},
   {path: 'addquestion', component: QuestionDetailComponent},
   {path: 'listquestion', component: IquestionlistComponent},
-  {path: 'viewquestion/:id', component: ViewquestionComponent}
+  {path: 'listquestion/viewquestion/:id', component: ViewquestionComponent}
 ];
 
 @NgModule({
