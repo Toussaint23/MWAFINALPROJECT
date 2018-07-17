@@ -1,0 +1,103 @@
+
+<mat-grid-list cols="3" rowHeight="300px" rowWidth="300px">
+  <mat-grid-tile
+      *ngFor="let question of myQuestions" let i = index>
+      <table>  
+          <tr> 
+        
+              <mat-card>
+                <mat-card-header>
+                  <mat-card-title class="aligncenter"><h1> {{question.category}}</h1></mat-card-title>
+                  <mat-card-subtitle class="aligncenter"> {{question.comapanyname}}</mat-card-subtitle>
+                  <mat-card-subtitle [hidden]="'true'"> {{question._id}}</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                  <p>
+                    {{question.questiontext}}
+                  </p>
+                  <form [formGroup]="myForm">  
+                      <mat-form-field class="qest-full-width">  
+                          <input formControlName="answer" matInput placeholder="Comment/Answer">  
+                      </mat-form-field>  
+                      <mat-error>  
+                          <span *ngIf="!myForm.get('answer').valid && myForm.get('answer').touched">Please enter the Comment/Answer !!!</span>  
+                      </mat-error>  
+
+                  </form>
+                </mat-card-content>
+                <mat-card-actions> 
+
+                  <button mat-button (click)='submitQuestion([question._id])'>Submit Answer</button>       
+                  <button mat-button [routerLink]="['viewquestion/', question._id]">VIEW</button>
+                  <!-- <button mat-button [routerLink]="['viewquestion/', question._id]" (click)='viewQuestion([question._id])'>VIEW</button> -->
+                  <!-- <button mat-butto color="primary" (click)='answerQuestion([question._id])'>ANSWER</button> -->
+                <!-- <form [formGroup]="myForm">  
+                    <input hidden formControlName="answer" placeholder="Answer">
+                </form> -->  
+                </mat-card-actions>
+              </mat-card>
+           </tr>
+           <tr>
+
+          </tr>
+</table>
+</mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+<!-- <div formArrayName="items"
+  *ngFor="let item of orderForm.get('items').controls; let i = index;">
+  <div [formGroupName]="i">
+    <input formControlName="answer" placeholder="Answer">
+  </div>
+
+  Chosen name: {{ orderForm.controls.items.controls[i].controls.name.value }}
+</div> -->
+
+<!-- <mat-grid-list cols="4" rowHeight="100px">
+  <mat-grid-tile
+      *ngFor="let question of myQuestions" let i = index>
+    <mat-card>{{question.questiontext}}</mat-card>
+  </mat-grid-tile>
+</mat-grid-list> -->
+
+<!-- <table class="table">
+  <tr>
+      <th>#</th>
+      <th>category</th>
+  </tr>
+  <tr *ngFor="let question of myQuestions; let i = index">
+      <td>{{i + 1}}</td>
+      <td>{{question.category}}</td>
+      <mat-card>{{question.category}}</mat-card>
+  </tr>
+</table> -->
+
+<!-- <mat-grid-list cols="2" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let question of questions">{{ question.category }}</mat-grid-tile>
+    <mat-grid-tile>2</mat-grid-tile>
+    <mat-grid-tile>3</mat-grid-tile>
+    <mat-grid-tile>4</mat-grid-tile>
+  </mat-grid-list>
+
+  <mat-grid-list cols="4" rowHeight="100px">
+    <mat-grid-tile
+        *ngFor="let question of questions">
+             {{question.category}}
+    </mat-grid-tile>
+  </mat-grid-list>
+
+  <div>
+    <table  style="width:100%">
+    <tr>
+        <th>category Name</th>
+    </tr>
+    <tr *ngFor="let question of questions">
+        <td> "{{ question.category }}"</td>
+    </tr>
+    </table>
+    
+    </div> -->
