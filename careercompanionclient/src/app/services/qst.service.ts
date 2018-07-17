@@ -18,7 +18,9 @@ export class QstService {
     this.dataStore = { interviewqs: [] };
     this._InterviewQ = new BehaviorSubject<InterviewQ[]>([]);
   }
-
+  getUrl() {
+   // return this.httpClient.get();
+    }
  getQuestions() {
  return this.httpClient.get('http://localhost:3000/careercompanion/1.0.0/questions');
  }
@@ -31,8 +33,47 @@ export class QstService {
 
   });
 }
+getQuestionsById(id) {
+  const Url = `http://localhost:3000/careercompanion/1.0.0/questions/${id}`;
+  console.log('Url', Url);
+  return this.httpClient.get<InterviewQ[]>(Url)
+    .subscribe(data => {
+      this.dataStore.interviewqs = data;
+      console.log('byId', data);
+      this._InterviewQ.next(Object.assign({}, this.dataStore).interviewqs);
+    }, error => {
+      console.log(error);
+      console.log('Failed to fetch iquestion');
+    });
+}
 
-loadAll() {
+addAnswer(id, answer) {
+  const Url = `http://localhost:3000/careercompanion/1.0.0/questions/${id}`;
+  console.log('Url', Url);
+  return this.httpClient.put<InterviewQ[]>(Url, answer)
+    .subscribe(data => {
+   //   this.dataStore.interviewqs = data;
+      console.log('byId', data);
+ //     this._InterviewQ.next(Object.assign({}, this.dataStore).interviewqs);
+    }, error => {
+      console.log(error);
+      console.log('Failed to fetch iquestion');
+    });
+}
+// getQuestionsById(id) {
+//   const Url = `http://localhost:3000/careercompanion/1.0.0/questions/${id}`;
+//   console.log('Url', Url);
+//   return this.httpClient.get<InterviewQ[]>(Url)
+//     .subscribe(data => {
+//       this.dataStore.interviewqs = data;
+//       console.log('byId', data);
+//       this._InterviewQ.next(Object.assign({}, this.dataStore).interviewqs);
+//     }, error => {
+//       console.log(error);
+//       console.log('Failed to fetch iquestion');
+//     });
+// }
+getAllQuestions() {
   const Url = 'http://localhost:3000/careercompanion/1.0.0/questions';
 
   return this.httpClient.get<InterviewQ[]>(Url)
@@ -40,16 +81,9 @@ loadAll() {
       this.dataStore.interviewqs = data;
       this._InterviewQ.next(Object.assign({}, this.dataStore).interviewqs);
     }, error => {
+      console.log(error);
       console.log('Failed to fetch iquestion');
     });
 }
-// addQuestion(addInterviewQ) {
-//   this._interviewQ.category = addInterviewQ.
-//   console.log('this._interviewQ.category: ', this._interviewQ.category);
-//    console.log('addInterviewQ: ', addInterviewQ);
-//   this.httpClient.post('http://localhost:3000/careercompanion/1.0.0/questions',  addInterviewQ).subscribe(res => {
-//    // console.log('res: ', res.json());
-//   });
-// }
 
 }

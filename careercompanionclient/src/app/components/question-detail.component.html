@@ -11,8 +11,7 @@
                         <span *ngIf="!myForm.get('category').valid && myForm.get('category').touched">Please enter the Category !!!</span>  
                     </mat-error>  
                   </td>
-              </tr> 
-                <tr> 				
+			
                 <td>  
                     <mat-form-field class="qest-full-width">  
                         <input formControlName="companyname" matInput placeholder="Company Name">  
@@ -24,8 +23,9 @@
                 </tr>
                 <tr>  
                 <td>  
+                    
                     <mat-form-field class="qest-full-width">  
-                        <input formControlName="questiontext" matInput placeholder="Question">  
+                        <textarea rows="5" formControlName="questiontext" matInput placeholder="Question">  </textarea>
                     </mat-form-field>  
                     <mat-error>  
                         <span *ngIf="!myForm.get('questiontext').valid && myForm.get('questiontext').touched">Please Enter Interview Question !!!</span>  

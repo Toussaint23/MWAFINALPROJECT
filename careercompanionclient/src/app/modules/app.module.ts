@@ -34,12 +34,14 @@ import {QuestionDetailComponent} from '../components/question-detail.component';
 import {InterviewQ, Comment} from '../models/interview-q';
 import {QstService} from '../services/qst.service';
 import { IquestionlistComponent } from '../components/iquestionlist.component';
+import { ViewquestionComponent } from '../components/viewquestion.component';
 
 const routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'login', component: StudentsComponent},
   {path: 'addquestion', component: QuestionDetailComponent},
-  {path: 'listquestion', component: IquestionlistComponent}
+  {path: 'listquestion', component: IquestionlistComponent},
+  {path: 'viewquestion/:id', component: ViewquestionComponent}
 ];
 
 @NgModule({
@@ -49,7 +51,8 @@ const routes = [
     SigninComponent,
     StudentsComponent,
     QuestionDetailComponent,
-    IquestionlistComponent
+    IquestionlistComponent,
+    ViewquestionComponent
   ],
   imports: [
     BrowserModule,

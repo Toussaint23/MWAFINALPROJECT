@@ -1,16 +1,16 @@
 let mongoose =require('mongoose');
 let QuestionSchema = new mongoose.Schema ({
- 
- category:{type: String, required: false},
- companyname:{type: String, default: 'N/A'},
+ lastName:{type: String, required: false},
+ firstName:{type: String, required: false},
  questiontext:{type: String, required: true},
  date: {type: Date, default: Date.now},
- 
+ tags:String,
+ company:String,
  comments : [
      {
-        firstName:{type: String, default: 'N/A'},
-        lastName: {type: String, default: 'N/A'},
-        textbody: {type: String, default: 'N/A'},
+        firstName:String,
+        lastName: String,
+        textbody: String,
         date: {type: Date, default: Date.now},
     }]
  });
