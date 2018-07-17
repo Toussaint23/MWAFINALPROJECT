@@ -17,17 +17,7 @@
     
 .demo-full-width {    
     width: 100%;    
-} 
-
-.demo-half-width {    
-    width: 45%;
-    margin-right: 1.5%;    
-} 
-
-.demo-third-width {    
-    width: 30%;
-    margin-right: 1%;      
-} 
+}    
     
 body {    
     margin: 0;    

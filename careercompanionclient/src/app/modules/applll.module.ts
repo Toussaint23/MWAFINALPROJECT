@@ -25,8 +25,8 @@ import {SigninComponent} from '../components/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes = [
-  {path: 'register', component: RegisterComponent},
-  {path: 'login', component: SigninComponent}
+  {path: '', component: SigninComponent},
+  {path: 'register', component: RegisterComponent}
 ];
 
 @NgModule({

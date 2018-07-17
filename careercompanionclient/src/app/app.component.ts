@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
   template:
   `
-  <mat-toolbar>MUM Career Companion
-  <span style="flex: 1 1 auto"></span>
-  <button mat-button routerLink = '/register'>SignUp</button>
-  <button mat-button routerLink = '/login'>SignIn</button>
-  </mat-toolbar>
-  <router-outlet></router-outlet>
-
-
+  <!-- Main Toolbar of an App -->
+  <mat-toolbar color = "primary">
+        <span style="flex: 1 1 auto">MUM Career Companion</span>
+        <span>
+          <button mat-button routerLink = ''>Home (LQ)</button>
+          <button mat-button [routerLink] = "['save', 'student']">New User</button>
+          <button mat-button [routerLink] = "['list', 'student']">Students</button>
+          <button mat-button [routerLink] = "['list', 'student', 'hired']">Students hired</button>
+          <button mat-button [routerLink] = "['save', 'question']">Post Question</button>
+          <button mat-button [routerLink] = "['login']" [queryParams]="{signout:''}">Sign out</button>
+        </span>
+    </mat-toolbar>
+<mat-card>
+    <router-outlet></router-outlet>
   `
   ,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'MUM Career Companion';
+  public visible: Boolean;
+  public title: String = 'MUM Career Companion';
+  constructor() {}
 }

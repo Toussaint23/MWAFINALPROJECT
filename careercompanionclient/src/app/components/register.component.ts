@@ -1,78 +1,50 @@
 import {Component} from '@angular/core';
+import {
+    FormGroup,
+    FormControl,
+    Validators,
+    FormBuilder
+  } from '@angular/forms';
+import {user} from '../models/user';
+import {ApiService} from '../services/api.service';
+import { Observable } from 'rxjs';
 
 @Component({
 selector: 'app-register',
-template:
-`
-<mat-card>
-    <!-- Title of an Card -->
-    <mat-card-title>
-        create account and start to connect for your Dream Job
-    </mat-card-title>
-    <mat-card-content>
-        <form>
-            <table>
-                <tr>
-                    <td>
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="First Name">
-                        </mat-form-field>
-                    </td>
-                    <td>
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="Last Name">
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <mat-form-field class="demo-full-width">
-                            <textarea matInput placeholder="Address" matTextareaAutosize
-                            matAutosizeMinRows="2" matAutosizeMaxRows="5"></textarea>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <mat-form-field class="demo-full-width">
-                            <input matInput [matDatepicker]="picker" placeholder="Date of birth">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker touchUi="true" #picker></mat-datepicker>
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <span>Gender</span><br><br>
-                        <mat-radio-group>
-                            <mat-radio-button value="1">Male</mat-radio-button>
-                            <mat-radio-button value="2">Female</mat-radio-button>
-                        </mat-radio-group>
-                    </td>
-                    <td><br>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <mat-form-field class="demo-full-width">
-                            <input matInput placeholder="Email">
-                        </mat-form-field>
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2" class="content-center">
-                        <button mat-raised-button color="accent">Submit</button>
-                        <button mat-raised-button color="accent">Clear</button>
-                    </td>
-                </tr>
-            </table>
-        </form>
-    </mat-card-content>
-`
+templateUrl: '../templates/register.html'
 
 })
-export class RegisterComponent {}
+export class RegisterComponent {
+    registerPage: FormGroup;
+    constructor(private formBuilder: FormBuilder, private apiService: ApiService) {
+        this.registerPage = formBuilder.group({
+            'id': ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(6)])],
+            'status': ['', Validators.required],
+            'firstname': ['', Validators.required],
+            'lastname': ['', Validators.required],
+            'country': ['', Validators.required],
+            'gender': ['', Validators.required],
+            'mail': ['', Validators.compose([Validators.required, Validators.email])],
+            'position': [''],
+            'cname': [''],
+            'cstate': [''],
+            'ccity': [''],
+            'rname': [''],
+            'rstate': [''],
+            'rcity': [''],
+        });
+    }
+
+    onSubmit() {
+        const newUser = user(this.registerPage.value);
+       this.apiService.saveUser(newUser).subscribe((data) => {
+            if (data.status === 200) {
+              localStorage.setItem('token', data.message);
+              this.registerPage.reset();
+              alert(`Success: ${data.message}`);
+           } else {
+              alert(`Error ${data.status}: ${data.message}`);
+           }
+         });
+    }
+}

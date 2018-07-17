@@ -4,12 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var lessMiddleware = require('less-middleware');
 var logger = require('morgan');
+var cors = require('cors');
 var PropertiesReader = require('properties-reader');
 var properties = PropertiesReader('./config/properties.file');
 require('./db_connection/database_connection')
 
 var studentRouter = require('./routes/student');
 var iquestionRouter = require('./routes/iquestion');
+
 
 var port=properties.get('server.port');
 var prefix = properties.get('server.path');
@@ -23,6 +25,7 @@ app.enable('strict routing');
 app.enable('case sensitive routing');
 app.disable('x-powered-by');
 
+app.use(cors());
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
