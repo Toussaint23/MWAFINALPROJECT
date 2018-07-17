@@ -12,8 +12,6 @@ import { Component } from '@angular/core';
   <button mat-button routerLink = '/listquestion'>list Question</button>
   </mat-toolbar>
   <router-outlet></router-outlet>
-
-
   `
   ,
   styleUrls: ['./app.component.css']
