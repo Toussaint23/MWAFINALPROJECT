@@ -1,6 +1,9 @@
 export class InterviewQ {
     id = 0;
+    firstname = '';
+    lastname = '';
     category = '';
+    email = '';
     questiontext = '';
     comapanyname = '';
     date = '';
@@ -8,21 +11,30 @@ export class InterviewQ {
 }
 
 export class Comment {
+    firstname = '';
+    lastname = '';
     commenttext = '';
+    email = '';
     date = '';
 }
 
 export const interviews: InterviewQ[] = [
     {
         id: 1,
+        lastname : 'm',
+        firstname : 'eee',
         category: 'Java',
+        email : 'mm@mum.edu',
         questiontext : 'mm',
         comapanyname: 'google',
         date : '',
         comments  : [
             {
-               commenttext : 'mm',
+               firstname : 'mm',
+               lastname : 'mm',
+               email : 'm@mum.edu',
                date : '',
+               commenttext : 'mm'
            }],
         }
     ];

@@ -36,12 +36,15 @@ import { QstService } from './services/qst.service';
 import {QuestionDetailComponent} from './components/question-detail.component';
 import {InterviewQ, Comment} from './models/interview-q';
 import { IquestionlistComponent } from './components/iquestionlist.component';
+import { ViewquestionComponent } from './components/viewquestion.component';
+import { HomepageComponent } from './homepage/homepage.component';
 
 const routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'welcome', component: StudentsComponent},
   {path: 'addquestion', component: QuestionDetailComponent},
-  {path: 'listquestion', component: IquestionlistComponent}
+  {path: 'listquestion', component: IquestionlistComponent},
+  {path: 'listquestion/viewquestion/:id', component: ViewquestionComponent}
 
 ];
 
@@ -52,7 +55,9 @@ const routes = [
     SigninComponent,
     StudentsComponent,
     IquestionlistComponent,
-    QuestionDetailComponent
+    QuestionDetailComponent,
+    ViewquestionComponent,
+    HomepageComponent
 
   ],
   imports: [
