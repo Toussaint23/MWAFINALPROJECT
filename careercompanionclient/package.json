@@ -22,10 +22,10 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@ngrx/store": "^6.0.1",
     "angular-material-data-table": "^0.10.10",
     "core-js": "^2.5.4",
     "hammerjs": "^2.0.8",
-    "redux": "^4.0.0",
     "rxjs": "^6.2.2",
     "zone.js": "^0.8.26"
   },

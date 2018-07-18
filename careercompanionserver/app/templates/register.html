@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Careercompanionclient</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+  
+  <mat-card-title>User Register</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]="registerPage" (ngSubmit)="onSubmit()">
+      <mat-form-field class="demo-half-width">
+        <input type ="number" name="id" formControlName="id" matInput placeholder="Student ID*"/>
+      </mat-form-field>
+      <mat-form-field class="demo-half-width">
+          <mat-select placeholder="Gender*" formControlName="gender" name = "gender">
+            <mat-option value="male">Male</mat-option>
+            <mat-option value="female">Female</mat-option>
+          </mat-select>
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="demo-half-width">
+          <input type ="text" name="firstName" formControlName="firstname" matInput placeholder="Firstname*"/>
+      </mat-form-field>
+      <mat-form-field class="demo-half-width">
+          <input type ="text" name="lastName" formControlName="lastname" matInput placeholder="Lastname*"/>
+      </mat-form-field> 
+      <br/>
+      <mat-form-field class="demo-half-width">
+        <input type ="text" name="country" formControlName="country" matInput placeholder="Country*"/>
+      </mat-form-field>
+      <mat-form-field class="demo-half-width">
+          <input type ="mail" name="mail" formControlName="mail" matInput placeholder="Email*"/>
+      </mat-form-field>
+      <br/>
+      <mat-form-field class="demo-half-width" >
+          <mat-select placeholder="Status*" name = 'status'formControlName="status">
+            <mat-option value="hired">Hired student</mat-option>
+            <mat-option value="candidate">Candidate student</mat-option>
+            <mat-option value="admin">Adminstrator</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="demo-half-width">
+            <input type ="text" name="position" formControlName="position" matInput placeholder="Position"/>
+        </mat-form-field>
+        <br/>
+        <mat-form-field class="demo-third-width">
+          <input type ="text" name="cname" formControlName="cname" matInput placeholder="Company Name"/>
+        </mat-form-field>
+        <mat-form-field class="demo-third-width">
+            <input type ="text" name="cstate" formControlName="cstate" matInput placeholder="Company State"/>
+        </mat-form-field>
+              <mat-form-field class="demo-third-width">
+            <input type ="text" name="ccity" formControlName="ccity" matInput placeholder="Company City"/>
+        </mat-form-field>
+        <br/>
+      <mat-form-field class="demo-third-width">
+          <input type ="text" name="rname" formControlName="rname" matInput placeholder="Recruiter Name"/>
+        </mat-form-field>
+        <mat-form-field class="demo-third-width">
+            <input type ="text" name="rstate" formControlName="rstate" matInput placeholder="Recruiter State"/>
+        </mat-form-field>
+        <mat-form-field class="demo-third-width">
+            <input type ="text" name="rcity" formControlName="rcity" matInput placeholder="Recruiter City"/>
+        </mat-form-field>
+        <br/>
+      <button class="demo-half-width" [disabled]="!registerPage.valid" mat-raised-button color="primary">Save</button>
+      <button type ="reset" class="demo-half-width" mat-raised-button color="warn">Clean</button>
+      </form>
+  </mat-card-content>
+</body>
+</html>
