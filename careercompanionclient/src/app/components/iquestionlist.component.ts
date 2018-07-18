@@ -50,23 +50,20 @@ export class IquestionlistComponent implements OnInit {
       'date': Date.now,
       'textbody': answerControl.value
   };
-    this._QstService.addAnswer(id, testJson);
+    // this._QstService.addAnswer(id, testJson);
   }
-   // this._QstService.getQuestionsById(id);
   }
   viewQuestion(id) {
-    this._QstService.getQuestionsById(id);
+  //  this._QstService.getQuestionsById(id);
     console.log('detailInterviewQuestion', this._QstService.detailInterviewQuestion);
-   // this.createForm();
-   // (<FormArray>this.myForm.controls['answer']).push(new FormControl('', Validators.required));
-  }
+ }
   createForm() {
     this.myForm = this.formBuilder.group({
         'answer': ['write your Answer/comment', [Validators.required]],
     });
   }
   getQuestion() {
-    this._QstService.getAllQuestions();
+//    this._QstService.getAllQuestions();
     this.dataSource = new MatTableDataSource<InterviewQ>(this._QstService.dataStore.interviewqs);
      this.myQuestions = this.dataSource.data;
      console.log('questions', this.myQuestions);

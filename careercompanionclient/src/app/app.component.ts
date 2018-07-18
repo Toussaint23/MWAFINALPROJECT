@@ -16,8 +16,8 @@ import {Component} from '@angular/core';
           <button mat-button [routerLink] = "['login']" [queryParams]="{signout:''}">Sign out</button>
         </span>
     </mat-toolbar>
-<mat-card>
-    <router-outlet></router-outlet>
+  <mat-card>
+  <router-outlet></router-outlet>
   `
   ,
   styleUrls: ['./app.component.css']

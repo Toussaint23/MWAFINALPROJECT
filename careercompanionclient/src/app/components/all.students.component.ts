@@ -5,18 +5,19 @@ import { ApiService } from '../services/api.service';
 
 @Component({
 selector: 'app-studentslist',
-templateUrl: '../templates/listStudentsHired.html',
-styleUrls: ['../templates/listStudentsHired.css']
+templateUrl: '../templates/listStudents.html',
+styleUrls: ['../templates/listStudents.css']
 
 })
-export class StudentsComponent implements OnInit {
+export class AllStudentsComponent implements OnInit {
     @Input() students: Student[];
 
-    displayedColumns = ['lastName', 'firstName', 'mail', 'country', 'details_employment', 'position', 'recruiter'];
-    dataSource: MatTableDataSource<Student>;
+   // displayedColumns = ['lastName', 'firstName', 'mail', 'country', 'details_employment', 'position', 'recruiter'];
+    displayedColumns = ['lastName', 'firstName', 'mail', 'country'];
+    dataSources: MatTableDataSource<Student>;
 
     constructor( private getStudentsSVC: ApiService) {
-      this.getStudentsSVC.loadAll();
+      this.getStudentsSVC.loadAllStudent();
     }
 
     @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -24,18 +25,18 @@ export class StudentsComponent implements OnInit {
 
     // tslint:disable-next-line:use-life-cycle-interface
     ngAfterViewInit(): void {
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+      this.dataSources.paginator = this.paginator;
+      this.dataSources.sort = this.sort;
     }
 
     ngOnInit() {
         console.log(this.students);
-      this.dataSource = new MatTableDataSource<Student>(this.getStudentsSVC.dataStore.students);
+      this.dataSources = new MatTableDataSource<Student>(this.getStudentsSVC.dataStores.students);
     }
 
     applyFilter(filterValue: string) {
       filterValue = filterValue.trim(); // Remove whitespace
       filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
-      this.dataSource.filter = filterValue;
+      this.dataSources.filter = filterValue;
     }
 }

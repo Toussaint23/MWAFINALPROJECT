@@ -5,7 +5,7 @@
     </mat-form-field>
   </div>
 
-        <mat-table #table [dataSource]="dataSource" matSort>
+        <mat-table #table [dataSource]="dataSources" matSort>
           
           <ng-container matColumnDef="lastName">
             <mat-header-cell *matHeaderCellDef mat-sort-header> LastName </mat-header-cell>
@@ -25,21 +25,6 @@
           <ng-container matColumnDef="country">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Country </mat-header-cell>
             <mat-cell *matCellDef="let student"> {{student.country}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="details_employment">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </mat-header-cell>
-            <mat-cell *matCellDef="let student"> {{student.details_employment[0].company.name}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Position </mat-header-cell>
-            <mat-cell *matCellDef="let student"> {{student.details_employment[0].position}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="recruiter">
-            <mat-header-cell *matHeaderCellDef mat-sort-header>Recruiter </mat-header-cell>
-            <mat-cell *matCellDef="let student"> {{student.details_employment[0].recruiter.name}} </mat-cell>
           </ng-container>
       
           <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

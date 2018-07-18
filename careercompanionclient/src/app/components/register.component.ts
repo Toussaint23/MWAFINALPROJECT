@@ -39,7 +39,7 @@ export class RegisterComponent {
         const newUser = user(this.registerPage.value);
        this.apiService.saveUser(newUser).subscribe((data) => {
             if (data.status === 200) {
-              localStorage.setItem('token', data.message);
+              localStorage.setItem('token', data.token);
               this.registerPage.reset();
               alert(`Success: ${data.message}`);
            } else {

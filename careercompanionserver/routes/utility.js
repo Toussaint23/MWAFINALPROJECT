@@ -22,14 +22,17 @@ class Utility{
     verifyToken(req, res, next) {
         const token = req.body.token || req.query.token || req.headers['x-access-token'];
         
-        if (!token)
-            return res.status(403).send(JSON.stringify({message: 'No token provided.' }));
-        jwt.verify(token, "mycode", function(err, decoded) {
-            if (err)  res.send(JSON.stringify({status:401, message: err }));
-           // res.send(JSON.stringify({status:401, message: 'Failed to authenticate token.' }));
-            // if everything good, save to request for use in other routes
-            next();
-        });
+        if (!token) return res.status(403).send(JSON.stringify({message: 'No token provided.' }));
+        try{
+            jwt.verify(token, "mycode", function(err, decoded) {
+                if (err)  res.send(JSON.stringify({status:401, message: err }));
+            // res.send(JSON.stringify({status:401, message: 'Failed to authenticate token.' }));
+                // if everything good, save to request for use in other routes
+                next();
+            });
+        }catch(err){
+
+        }
     }
 }
 

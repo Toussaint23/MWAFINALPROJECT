@@ -17,20 +17,19 @@ export class ViewquestionComponent implements OnInit {
   constructor(private _QstService: QstService, private httpClient: HttpClient, private _ActivatedRoute: ActivatedRoute) {
     const id = this._ActivatedRoute.snapshot.params['id'];
 
-   const returnedValue = this._QstService. getQuestionsById(id);
+   // const returnedValue = this._QstService. getQuestionsById(id);
      this.dataSource = new MatTableDataSource<InterviewQ>(this._QstService.dataStore.interviewqs);
      this.myQuestions = this.dataSource.data;
-    console.log('questions', returnedValue);
+    // console.log('questions', returnedValue);
     console.log('id', id);
     console.log('interviewqs',  this.myQuestions);
       console.log('this.detailInterviewQ.dataStore.interviewqs',  this._QstService.detailInterviewQ.detailInterviewqs);
-      // this._QstService.detailInterviewQ.detailInterviewqs[0].comments.forEach(comment => console.log('comment', comment.commenttext));
-  }
+       }
 
   ngOnInit() {
   }
 
   viewQuestion(id) {
-    this._QstService.getQuestionsById(id);
+   // this._QstService.getQuestionsById(id);
   }
 }

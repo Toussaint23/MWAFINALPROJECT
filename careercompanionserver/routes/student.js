@@ -66,6 +66,7 @@ routes.get('/students',utility.verifyToken, (req,res,next)=>{
         res.send(JSON.stringify({status:200, message: result, token: token}));
     });
 });
+
 routes.get('/students/:status',utility.verifyToken, (req,res,next)=>{
     student.find({"status":req.params.status},(err,result)=>{
        if(err) return next(err);
@@ -74,7 +75,17 @@ routes.get('/students/:status',utility.verifyToken, (req,res,next)=>{
     };
     const token = utility.getToken(payload);
     res.send(JSON.stringify({status:200, message: result, token: token}));
-   });
+    });
+});
+routes.get('/students/:status1/:status2',utility.verifyToken, (req,res,next)=>{
+    student.find({"status":[req.params.status1, req.params.status2]},(err,result)=>{
+       if(err) return next(err);
+       const payload = {
+        op: "listing"
+    };
+    const token = utility.getToken(payload);
+    res.send(JSON.stringify({status:200, message: result, token: token}));
+    });
 });
 routes.put('/student/:id',utility.verifyToken, (req,res,next)=>{
     let query = {"_id":req.params.id};
